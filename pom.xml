@@ -1,0 +1,160 @@
+<!--<project
+	xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>PhonologixTesting</groupId>
+	<artifactId>PhonologixTesting</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+		<dependency>
+
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>7.14.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>7.14.0</version>
+			<scope>test</scope>
+		</dependency>
+		<!--https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
+		<!--<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>maven-cucumber-reporting</artifactId>
+			<version>9863b38b-beta</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.0.1</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.0.1-jre</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>5.7.7</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+
+		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+
+
+
+
+		<!--		&lt;!&ndash; https://mvnrepository.com/artifact/jakarta.mail/jakarta.mail-api &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>jakarta.mail</groupId>-->
+<!--			<artifactId>jakarta.mail-api</artifactId>-->
+<!--			<version>2.1.2</version>-->
+<!--		</dependency>-->
+
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<!-- Use the appropriate version -->
+				<configuration>
+					<source>1.8</source>
+					<!-- Update this to your desired source compatibility level -->
+					<target>1.8</target>
+					<!-- Update this to your desired target compatibility level -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>2.8.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>PhonologixTesting</projectName>
+							<outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+							<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>exec-maven-plugin</artifactId>
+			<version>1.6.0</version>
+			<executions>
+				<execution>
+					<id>first-execution</id>
+					<phase>install</phase>
+					<goals>
+						<goal>java</goal>
+					</goals>
+					<configuration>
+						<classpathScope>test</classpathScope>
+						<mainClass>EmailSender.java</mainClass>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+	</build>
+</project>
